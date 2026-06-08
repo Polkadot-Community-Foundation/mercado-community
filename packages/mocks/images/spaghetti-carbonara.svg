@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#F3E5F5"/>
+  <ellipse cx="300" cy="300" rx="160" ry="60" fill="#ECF0F1" stroke="#BDC3C7" stroke-width="3"/>
+  <path d="M200 280 Q240 240 280 280 Q320 240 360 280 Q400 240 420 280" fill="none" stroke="#F5CBA7" stroke-width="6" stroke-linecap="round"/>
+  <path d="M210 300 Q250 260 290 300 Q330 260 370 300 Q400 260 410 300" fill="none" stroke="#F5CBA7" stroke-width="6" stroke-linecap="round"/>
+  <path d="M220 285 Q260 250 300 285 Q340 250 380 285" fill="none" stroke="#F5CBA7" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="300" cy="280" r="15" fill="#F1C40F" opacity="0.8"/>
+  <circle cx="260" cy="290" r="8" fill="#1B2631" opacity="0.4"/>
+  <circle cx="340" cy="285" r="7" fill="#1B2631" opacity="0.4"/>
+  <text x="300" y="440" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#7D3C98" text-anchor="middle">Spaghetti Carbonara</text>
+  <text x="300" y="480" font-family="Arial, sans-serif" font-size="22" fill="#7D3C98" text-anchor="middle" opacity="0.7">$15.00</text>
+</svg>

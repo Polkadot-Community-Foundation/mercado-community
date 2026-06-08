@@ -1,0 +1,1 @@
+export { MyOrdersBadge } from './MyOrdersBadge';

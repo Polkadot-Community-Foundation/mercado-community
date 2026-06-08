@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#7D3C98"/>
+  <ellipse cx="400" cy="280" rx="130" ry="50" fill="#ECF0F1" stroke="#BDC3C7" stroke-width="3"/>
+  <path d="M320 260 Q360 220 400 260 Q440 220 480 260" fill="none" stroke="#F5CBA7" stroke-width="8" stroke-linecap="round"/>
+  <path d="M330 275 Q370 235 410 275 Q450 235 470 275" fill="none" stroke="#F5CBA7" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="400" cy="270" r="25" fill="#E74C3C" opacity="0.7"/>
+  <text x="400" y="430" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#fff" text-anchor="middle">Pasta House</text>
+  <text x="400" y="480" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" opacity="0.8">Handmade Italian pasta</text>
+</svg>

@@ -1,0 +1,1 @@
+export { StakeDisplay } from './StakeDisplay';

@@ -1,0 +1,26 @@
+# Hardhat artifacts
+cache/
+artifacts/
+
+# TypeChain generated files
+typechain-types/
+
+# Build output
+dist/
+
+# Local binaries
+bin/
+
+# Node modules (handled by root)
+node_modules/
+
+# Coverage
+coverage/
+coverage.json
+
+# Environment files
+.env
+.env.local
+
+# Deployment logs (keep deployment JSONs)
+*.log

@@ -1,0 +1,1 @@
+export { RateRestaurant } from './RateRestaurant';

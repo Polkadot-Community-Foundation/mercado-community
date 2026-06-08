@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#C0392B"/>
+  <path d="M400 100 L550 400 L250 400 Z" fill="#F5CBA7"/>
+  <circle cx="370" cy="300" r="20" fill="#E74C3C"/>
+  <circle cx="420" cy="260" r="18" fill="#E74C3C"/>
+  <circle cx="390" cy="350" r="15" fill="#E74C3C"/>
+  <circle cx="440" cy="330" r="16" fill="#27AE60" opacity="0.8"/>
+  <text x="400" y="480" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#fff" text-anchor="middle">Pizza Corner</text>
+  <text x="400" y="530" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" opacity="0.8">Authentic Neapolitan pizza</text>
+</svg>

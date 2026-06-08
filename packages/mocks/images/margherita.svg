@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#FFF3E0"/>
+  <circle cx="300" cy="280" r="170" fill="#F5CBA7"/>
+  <circle cx="300" cy="280" r="155" fill="#E74C3C" opacity="0.7"/>
+  <circle cx="250" cy="240" r="30" fill="#FDFEFE" opacity="0.9"/>
+  <circle cx="340" cy="260" r="28" fill="#FDFEFE" opacity="0.9"/>
+  <circle cx="280" cy="320" r="32" fill="#FDFEFE" opacity="0.9"/>
+  <circle cx="360" cy="330" r="26" fill="#FDFEFE" opacity="0.9"/>
+  <ellipse cx="310" cy="280" rx="15" ry="8" fill="#27AE60" transform="rotate(-30 310 280)"/>
+  <ellipse cx="270" cy="290" rx="12" ry="6" fill="#27AE60" transform="rotate(20 270 290)"/>
+  <text x="300" y="510" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#C0392B" text-anchor="middle">Margherita</text>
+  <text x="300" y="550" font-family="Arial, sans-serif" font-size="22" fill="#C0392B" text-anchor="middle" opacity="0.7">$14.00</text>
+</svg>

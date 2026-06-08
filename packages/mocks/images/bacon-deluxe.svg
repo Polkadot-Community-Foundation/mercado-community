@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#FDE8D0"/>
+  <ellipse cx="300" cy="390" rx="150" ry="50" fill="#D4A017"/>
+  <rect x="160" y="320" width="280" height="25" fill="#8B4513"/>
+  <rect x="155" y="295" width="290" height="30" fill="#C0392B" rx="3"/>
+  <path d="M170 290 Q210 275 250 290 Q290 275 330 290 Q370 275 410 290 Q430 275 440 290" fill="none" stroke="#A93226" stroke-width="8"/>
+  <rect x="160" y="265" width="280" height="25" fill="#F4C430" rx="3"/>
+  <rect x="155" y="240" width="290" height="30" fill="#8B4513"/>
+  <ellipse cx="300" cy="230" rx="150" ry="50" fill="#D4A017"/>
+  <ellipse cx="300" cy="220" rx="140" ry="40" fill="#E8B960" opacity="0.6"/>
+  <text x="300" y="510" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#5D4037" text-anchor="middle">Bacon Deluxe</text>
+  <text x="300" y="550" font-family="Arial, sans-serif" font-size="22" fill="#5D4037" text-anchor="middle" opacity="0.7">$16.00</text>
+</svg>

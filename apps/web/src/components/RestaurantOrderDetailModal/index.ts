@@ -1,0 +1,1 @@
+export { RestaurantOrderDetailModal } from './RestaurantOrderDetailModal';

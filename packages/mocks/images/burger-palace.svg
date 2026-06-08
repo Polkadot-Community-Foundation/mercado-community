@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#D4A017"/>
+  <circle cx="400" cy="250" r="120" fill="#8B4513"/>
+  <ellipse cx="400" cy="200" rx="130" ry="50" fill="#F4A460"/>
+  <ellipse cx="400" cy="300" rx="130" ry="50" fill="#F4A460"/>
+  <rect x="270" y="230" width="260" height="20" fill="#228B22" rx="5"/>
+  <rect x="280" y="255" width="240" height="25" fill="#CD5C5C" rx="3"/>
+  <text x="400" y="450" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#fff" text-anchor="middle">Burger Palace</text>
+  <text x="400" y="500" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" opacity="0.8">The best burgers in town</text>
+</svg>

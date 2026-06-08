@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#FFF3E0"/>
+  <circle cx="300" cy="280" r="170" fill="#F5CBA7"/>
+  <circle cx="300" cy="280" r="155" fill="#E74C3C" opacity="0.7"/>
+  <circle cx="240" cy="230" r="20" fill="#C0392B"/>
+  <circle cx="330" cy="220" r="18" fill="#C0392B"/>
+  <circle cx="370" cy="280" r="20" fill="#C0392B"/>
+  <circle cx="260" cy="300" r="19" fill="#C0392B"/>
+  <circle cx="320" cy="340" r="18" fill="#C0392B"/>
+  <circle cx="240" cy="350" r="20" fill="#C0392B"/>
+  <circle cx="370" cy="350" r="17" fill="#C0392B"/>
+  <circle cx="300" cy="270" r="19" fill="#C0392B"/>
+  <text x="300" y="510" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#C0392B" text-anchor="middle">Pepperoni</text>
+  <text x="300" y="550" font-family="Arial, sans-serif" font-size="22" fill="#C0392B" text-anchor="middle" opacity="0.7">$16.00</text>
+</svg>

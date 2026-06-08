@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#2980B9"/>
+  <path d="M0 350 Q200 310 400 350 Q600 390 800 350 L800 600 L0 600 Z" fill="#1A5276" opacity="0.5"/>
+  <path d="M0 380 Q200 340 400 380 Q600 420 800 380 L800 600 L0 600 Z" fill="#1A5276" opacity="0.3"/>
+  <ellipse cx="400" cy="240" rx="80" ry="35" fill="#A9CCE3"/>
+  <path d="M340 230 Q400 180 460 230" fill="#FA8072"/>
+  <line x1="390" y1="240" x2="390" y2="200" stroke="#7F8C8D" stroke-width="3"/>
+  <line x1="410" y1="240" x2="415" y2="195" stroke="#7F8C8D" stroke-width="3"/>
+  <text x="400" y="440" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#fff" text-anchor="middle">Seaside Grill</text>
+  <text x="400" y="490" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" opacity="0.8">Fresh seafood by the beach</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#C0392B"/>
+  <path d="M280 300 Q400 380 520 300" fill="#2C3E50" stroke="#1A1A1A" stroke-width="3"/>
+  <line x1="280" y1="300" x2="240" y2="260" stroke="#7F8C8D" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="360" cy="280" r="12" fill="#F39C12"/>
+  <circle cx="400" cy="290" r="10" fill="#E74C3C"/>
+  <circle cx="440" cy="275" r="14" fill="#27AE60"/>
+  <path d="M380 240 Q385 210 390 240" fill="none" stroke="#ECF0F1" stroke-width="2" opacity="0.5"/>
+  <path d="M410 235 Q415 200 420 235" fill="none" stroke="#ECF0F1" stroke-width="2" opacity="0.5"/>
+  <text x="400" y="430" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#fff" text-anchor="middle">Wok &amp; Roll</text>
+  <text x="400" y="480" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" opacity="0.8">Asian stir-fry bowls</text>
+</svg>

@@ -1,0 +1,19 @@
+{
+  "name": "@mercado/mocks",
+  "private": true,
+  "license": "GPL-3.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc --noEmit",
+    "images:serve": "serve -l 5888 ."
+  },
+  "dependencies": {
+    "@mercado/types": "workspace:*"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

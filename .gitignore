@@ -1,0 +1,39 @@
+node_modules
+dist
+.turbo
+coverage
+playwright-report
+storybook-static
+*.tsbuildinfo
+packages/e2e/test-results/
+ppn/
+
+# OS
+.DS_Store
+
+# Environment files
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Contract build artifacts
+packages/contracts/cache/
+packages/contracts/bin/
+packages/contracts/scripts/bin/
+packages/contracts/artifacts/
+packages/contracts/typechain-types/
+
+# AI tooling state (session/cache only)
+.claude/
+.cursor/
+.codeium/
+.gemini/
+.roo/
+.cline/
+.codex/
+.swarm/
+.ai/
+.llm/
+.mcp.json
+opencode.json

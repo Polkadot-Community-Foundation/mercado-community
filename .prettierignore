@@ -1,0 +1,9 @@
+ppn/
+.claude/
+dist/
+node_modules/
+pnpm-lock.yaml
+typechain-types/
+.papi/
+artifacts/
+cache/

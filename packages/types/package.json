@@ -1,0 +1,12 @@
+{
+  "name": "@mercado/types",
+  "private": true,
+  "license": "GPL-3.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  }
+}

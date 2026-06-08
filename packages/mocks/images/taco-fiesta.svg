@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#E67E22"/>
+  <path d="M300 320 Q400 150 500 320" fill="#F5CBA7" stroke="#D4A017" stroke-width="4"/>
+  <circle cx="370" cy="280" r="15" fill="#E74C3C"/>
+  <circle cx="410" cy="260" r="12" fill="#27AE60"/>
+  <circle cx="440" cy="290" r="14" fill="#F1C40F"/>
+  <circle cx="380" cy="300" r="10" fill="#8B4513"/>
+  <text x="400" y="440" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#fff" text-anchor="middle">Taco Fiesta</text>
+  <text x="400" y="490" font-family="Arial, sans-serif" font-size="22" fill="#fff" text-anchor="middle" opacity="0.8">Street-style tacos</text>
+</svg>

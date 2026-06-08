@@ -1,0 +1,124 @@
+name: Deploy Preview to Bulletin
+
+on:
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      skip-cache:
+        description: 'Skip deployment cache and force redeploy'
+        type: boolean
+        default: false
+
+concurrency:
+  group: dotns-preview-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  statuses: write
+  id-token: write
+  pull-requests: write
+
+jobs:
+  resolve:
+    name: Resolve Targets
+    runs-on: ubuntu-latest
+    outputs:
+      web-fqdn: ${{ steps.config.outputs.web-fqdn }}
+      web-url: ${{ steps.config.outputs.web-url }}
+      web-host: ${{ steps.config.outputs.web-host }}
+    steps:
+      - name: Determine deploy URLs
+        id: config
+        run: |
+          if [[ "$EVENT" == "pull_request" ]]; then
+            WEB_DOMAIN="pr${PR_NUM}.mercado"
+          else
+            # workflow_dispatch — use short SHA
+            SHA=$(echo "$COMMIT_SHA" | cut -c1-7)
+            WEB_DOMAIN="${SHA}.mercado"
+          fi
+
+          echo "web-fqdn=${WEB_DOMAIN}.dot" >> "$GITHUB_OUTPUT"
+          echo "web-url=https://${WEB_DOMAIN}.dot.li" >> "$GITHUB_OUTPUT"
+          echo "web-host=${WEB_DOMAIN}.dot.li" >> "$GITHUB_OUTPUT"
+        env:
+          EVENT: ${{ github.event_name }}
+          PR_NUM: ${{ github.event.pull_request.number }}
+          COMMIT_SHA: ${{ github.sha }}
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Load environment config
+        run: grep -v '^#' .github/env | grep -v '^$' >> $GITHUB_ENV
+
+      - name: Build
+        run: pnpm build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: web-build
+          path: apps/web/dist
+          retention-days: 1
+
+  deploy-preview:
+    name: Deploy Preview
+    needs: [resolve, build]
+    uses: paritytech/bulletin-deploy/.github/workflows/deploy.yml@main
+    with:
+      dotns-domain: ${{ needs.resolve.outputs.web-fqdn }}
+      artifact-name: web-build
+      skip-cache: ${{ inputs.skip-cache || false }}
+      max-retries: 10
+      env: paseo-next
+    secrets:
+      mnemonic: ${{ secrets.PASEO_DEPLOYER_KEY }}
+
+  comment:
+    name: Comment on PR
+    needs: [resolve, deploy-preview]
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment preview URL
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: dotns-preview
+          message: |
+            ## Preview Deployment
+
+            | Status | Domain | Preview |
+            |:------:|:------:|:-------:|
+            | Ready | `${{ needs.resolve.outputs.web-fqdn }}` | [**${{ needs.resolve.outputs.web-host }}**](${{ needs.resolve.outputs.web-url }}) |
+
+            <details>
+            <summary>Details</summary>
+
+            | Info | Value |
+            |------|-------|
+            | **CID** | `${{ needs.deploy-preview.outputs.cid }}` |
+            | **Commit** | `${{ github.event.pull_request.head.sha }}` |
+
+            </details>
+
+            ---
+            <sub>Updates on each push. [View workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})</sub>

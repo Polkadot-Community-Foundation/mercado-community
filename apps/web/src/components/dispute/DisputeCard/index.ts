@@ -1,0 +1,1 @@
+export { DisputeCard } from './DisputeCard';

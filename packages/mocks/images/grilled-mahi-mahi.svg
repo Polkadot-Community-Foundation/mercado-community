@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="600" height="600" fill="#E0F7FA"/>
+  <ellipse cx="300" cy="310" rx="160" ry="50" fill="#A9CCE3"/>
+  <ellipse cx="280" cy="280" rx="90" ry="35" fill="#D4A017"/>
+  <line x1="210" y1="275" x2="350" y2="275" stroke="#8B4513" stroke-width="2" opacity="0.3"/>
+  <line x1="215" y1="285" x2="345" y2="285" stroke="#8B4513" stroke-width="2" opacity="0.3"/>
+  <circle cx="370" cy="290" r="25" fill="#F39C12" opacity="0.8"/>
+  <circle cx="370" cy="290" r="15" fill="#E74C3C" opacity="0.6"/>
+  <circle cx="350" cy="260" r="8" fill="#27AE60"/>
+  <circle cx="370" cy="255" r="6" fill="#27AE60"/>
+  <text x="300" y="440" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#2980B9" text-anchor="middle">Grilled Mahi-Mahi</text>
+  <text x="300" y="480" font-family="Arial, sans-serif" font-size="22" fill="#2980B9" text-anchor="middle" opacity="0.7">$22.00</text>
+</svg>

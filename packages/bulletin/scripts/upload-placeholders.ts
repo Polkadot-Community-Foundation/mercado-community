@@ -3,8 +3,8 @@
  * Upload placeholder images to Bulletin Chain.
  *
  * Usage:
- *   BULLETIN_ENDPOINT=wss://paseo-bulletin-rpc.polkadot.io \
- *   IPFS_GATEWAY=https://paseo-ipfs.polkadot.io/ipfs/ \
+ *   BULLETIN_ENDPOINT=wss://summit-bulletin-rpc.polkadot.io \
+ *   IPFS_GATEWAY=https://summit-ipfs.polkadot.io/ipfs/ \
  *   npx tsx packages/bulletin/scripts/upload-placeholders.ts
  *
  * This script downloads Unsplash placeholder images and uploads them to
@@ -58,9 +58,9 @@ async function main() {
     );
     console.error('\nExample:');
     console.error(
-      '  BULLETIN_ENDPOINT=wss://paseo-bulletin-rpc.polkadot.io \\',
+      '  BULLETIN_ENDPOINT=wss://summit-bulletin-rpc.polkadot.io \\',
     );
-    console.error('  IPFS_GATEWAY=https://paseo-ipfs.polkadot.io/ipfs/ \\');
+    console.error('  IPFS_GATEWAY=https://summit-ipfs.polkadot.io/ipfs/ \\');
     console.error('  npx tsx packages/bulletin/scripts/upload-placeholders.ts');
     process.exit(1);
   }

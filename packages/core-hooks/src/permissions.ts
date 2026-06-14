@@ -9,7 +9,6 @@ import { debug } from './internal/debug';
 
 /**
  * External services that require permission when running in host environment.
- * Note: paseo-ipfs.polkadot.io is whitelisted in Triangle, no permission needed.
  *
  * Host API v0.7+ uses domain patterns (not full URLs):
  * - 'api.example.com' - exact domain
@@ -17,6 +16,7 @@ import { debug } from './internal/debug';
  */
 const REQUIRED_PERMISSIONS = [
   'nominatim.openstreetmap.org', // Reverse geocoding for location
+  'summit-ipfs.polkadot.io', // Summit IPFS gateway for menu/evidence image display
 ];
 
 /**

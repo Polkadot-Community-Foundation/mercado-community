@@ -141,13 +141,13 @@ check_prerequisites() {
     log_success "pnpm installed"
   fi
 
-  # Check bulletin-deploy
-  if command -v bulletin-deploy &> /dev/null; then
-    log_success "bulletin-deploy $(bulletin-deploy --version 2>/dev/null || echo 'installed')"
+  # Check polkadot-app-deploy (PCF fork; bins: polkadot-app-deploy / pad)
+  if command -v polkadot-app-deploy &> /dev/null; then
+    log_success "polkadot-app-deploy $(polkadot-app-deploy --version 2>/dev/null || echo 'installed')"
   else
-    log_warn "bulletin-deploy not found - installing..."
-    npm install -g bulletin-deploy@latest
-    log_success "bulletin-deploy installed"
+    log_warn "polkadot-app-deploy not found - installing..."
+    npm install -g @polkadot-community-foundation/polkadot-app-deploy@0.10.1
+    log_success "polkadot-app-deploy installed"
   fi
 
   if [[ ${#missing[@]} -gt 0 ]]; then
@@ -233,6 +233,8 @@ deploy_to_bulletin() {
     log_info "Enter your wallet mnemonic"
     echo "  This is used to sign the deployment transaction."
     echo "  Your mnemonic is NOT stored or logged."
+    echo "  NOTE: on Summit the signing account must be Bulletin storage-authorized"
+    echo "  and own the DotNS domain — there is no public faucet. See DEPLOY.md."
     echo ""
     read -r -s -p "Mnemonic (hidden): " MNEMONIC
     echo ""
@@ -256,11 +258,11 @@ deploy_to_bulletin() {
   fi
 
   echo ""
-  log_info "Deploying to Bulletin Chain..."
+  log_info "Deploying to Summit Bulletin Chain..."
   log_warn "This may take a few minutes..."
   echo ""
 
-  MNEMONIC="$MNEMONIC" bulletin-deploy "$DIST_DIR" "$domain"
+  MNEMONIC="$MNEMONIC" polkadot-app-deploy "$DIST_DIR" "$domain" --env summit
 
   echo ""
   log_success "Deployment complete!"

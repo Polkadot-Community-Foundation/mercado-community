@@ -1,0 +1,98 @@
+name: Deploy to Summit
+
+# Production deploy of the Mercado web app to Summit (Bulletin Chain + DotNS).
+#
+# Summit-only, production-only by design: on Summit every preview domain would be
+# a fresh DotNS registration (~11 SUM + Bulletin storage that expires in ~14 days
+# + a proof-of-personhood gate on short labels), so there are no per-PR preview
+# deploys. PR validation lives in ci.yml (lint / typecheck / tests). Always targets
+# the single production domain.
+#
+# Manual-dispatch only for now, so merging the Summit retargeting cannot fire a
+# premature production deploy. Enable the push-to-main trigger below once the
+# prerequisites are in place: the SUMMIT_DEPLOYER_KEY secret is set, the contracts
+# are deployed and their addresses filled into .github/env, and mercado.dot is
+# registered/owned by the deployer. The first deploy should be a deliberate manual run.
+on:
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - 'apps/web/**'
+  #     - 'packages/**'
+  #     - '.github/env'
+  #     - '.github/workflows/deploy-summit.yml'
+  workflow_dispatch:
+    inputs:
+      skip-cache:
+        description: 'Skip deployment cache and force redeploy'
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy-summit-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  statuses: write
+  id-token: write
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Load environment config (Summit)
+        run: grep -v '^#' .github/env | grep -v '^$' >> $GITHUB_ENV
+
+      - name: Build
+        run: pnpm build
+
+      - name: Assert build is Summit-only (no Paseo strings baked in)
+        run: |
+          if grep -rIl 'paseo' apps/web/dist; then
+            echo "::error::Paseo reference found in built bundle — aborting Summit deploy"
+            exit 1
+          fi
+          echo "OK: no Paseo strings in apps/web/dist"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: web-build
+          path: apps/web/dist
+          retention-days: 1
+
+  deploy:
+    name: Deploy to Summit
+    needs: build
+    uses: Polkadot-Community-Foundation/polkadot-app-deploy/.github/workflows/deploy.yml@v0.10.1
+    with:
+      dotns-domain: mercado.dot
+      artifact-name: web-build
+      env: summit
+      # Sign Bulletin storage txs with the (authorized) mnemonic account itself,
+      # NOT the public BULLETIN_POOL accounts — those are never storage-authorized
+      # on Summit and the preflight dies with "pool account N is not authorized".
+      direct-signer: true
+      polkadot-app-deploy-version: '0.10.1'
+      skip-cache: ${{ inputs.skip-cache || false }}
+      max-retries: 10
+    secrets:
+      # Summit Bulletin-authorized uploader / DotNS name owner for mercado.dot.
+      # Must be set in repo secrets before the first Summit deploy.
+      mnemonic: ${{ secrets.SUMMIT_DEPLOYER_KEY }}

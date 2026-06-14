@@ -7,9 +7,6 @@ import {
   CONNECTION_MODE_STORAGE_KEY,
   RELAY_CHAIN_SPEC,
   PARA_CHAIN_SPEC,
-  GENESIS_HASH,
-  PASEO_ASSET_HUB_GENESIS,
-  PASEO_ASSET_HUB_V2_GENESIS,
 } from './config';
 
 export type ConnectionMode = 'host' | 'rpc' | 'lightclient';
@@ -55,12 +52,13 @@ export interface ChainSpecs {
 /**
  * Load chain specs for smoldot light client.
  *
- * Supports:
- * 1. Explicit URLs from environment variables
- * 2. Bundled specs for known chains (Paseo Asset Hub)
+ * Summit is a private network with no bundled @polkadot-api/known-chains
+ * chainspec, so the only supported path is explicit relay/para chain spec URLs
+ * provided via VITE_RELAY_CHAIN_SPEC / VITE_PARA_CHAIN_SPEC. Without those,
+ * light-client mode is unavailable and the app falls back to RPC.
  */
 export async function loadChainSpecs(): Promise<ChainSpecs | null> {
-  // Strategy 1: Explicit URLs from env
+  // Explicit URLs from env
   if (RELAY_CHAIN_SPEC && PARA_CHAIN_SPEC) {
     try {
       const [relayRes, paraRes] = await Promise.all([
@@ -79,30 +77,6 @@ export async function loadChainSpecs(): Promise<ChainSpecs | null> {
       };
     } catch (err) {
       console.warn('[connection/detect] Error fetching chain specs:', err);
-      return null;
-    }
-  }
-
-  // Strategy 2: Known-chains lookup for Paseo Asset Hub (V1 and V2)
-  // Both V1 and V2 use the same relay chain specs
-  if (
-    GENESIS_HASH === PASEO_ASSET_HUB_GENESIS ||
-    GENESIS_HASH === PASEO_ASSET_HUB_V2_GENESIS
-  ) {
-    try {
-      const [relay, para] = await Promise.all([
-        import('@polkadot-api/known-chains/paseo'),
-        import('@polkadot-api/known-chains/paseo_asset_hub'),
-      ]);
-      return {
-        relaySpec: relay.chainSpec,
-        paraSpec: para.chainSpec,
-      };
-    } catch (err) {
-      console.warn(
-        '[connection/detect] Failed to load bundled chain specs:',
-        err,
-      );
       return null;
     }
   }

@@ -12,7 +12,7 @@ export const BULLETIN_ENDPOINT = import.meta.env.VITE_BULLETIN_ENDPOINT as
  */
 export const IPFS_GATEWAY_FOR_DISPLAY =
   (import.meta.env.VITE_IPFS_GATEWAY as string | undefined) ||
-  'https://ipfs.io/ipfs/';
+  'https://summit-ipfs.polkadot.io/ipfs/';
 
 /** Construct a display URL for an IPFS CID (for img src, etc.) */
 export function cidToDisplayUrl(cid: string): string {

@@ -8,12 +8,12 @@ import type { Restaurant, Dish } from '../../types';
 
 // Placeholder food images for restaurants without covers (hosted on Bulletin/IPFS)
 const PLACEHOLDER_COVERS = [
-  'https://paseo-ipfs.polkadot.io/ipfs/bafk2bzacecqjgqgpt2aer3ls6umq4a4wfygvqv64pjllv33oyeuzucz6dze44',
-  'https://paseo-ipfs.polkadot.io/ipfs/bafk2bzaced5yodrblihghtx527vsc6xivxsr7fq5o5xsuqfl7kecpwo5efwtq',
-  'https://paseo-ipfs.polkadot.io/ipfs/bafk2bzaceapong7kvtuid6twi7qcfbvcppuu2au6r5obu3j6luoweiq6sku4s',
-  'https://paseo-ipfs.polkadot.io/ipfs/bafk2bzacedfjndahvfazmjp2wx2f7lynj4uwsmkqrd4wwbgydzqdldqlbup2m',
-  'https://paseo-ipfs.polkadot.io/ipfs/bafk2bzacecdyv44farkxdyy5j72pmgdtmpztpjtnfp4w7p55ygh5zhkicuamu',
-  'https://paseo-ipfs.polkadot.io/ipfs/bafk2bzacebzoo4lohy667c55msv3t3ip2t57z5nyzaw6sghfv5mxwg3nsycmu',
+  'https://summit-ipfs.polkadot.io/ipfs/bafk2bzacecqjgqgpt2aer3ls6umq4a4wfygvqv64pjllv33oyeuzucz6dze44',
+  'https://summit-ipfs.polkadot.io/ipfs/bafk2bzaced5yodrblihghtx527vsc6xivxsr7fq5o5xsuqfl7kecpwo5efwtq',
+  'https://summit-ipfs.polkadot.io/ipfs/bafk2bzaceapong7kvtuid6twi7qcfbvcppuu2au6r5obu3j6luoweiq6sku4s',
+  'https://summit-ipfs.polkadot.io/ipfs/bafk2bzacedfjndahvfazmjp2wx2f7lynj4uwsmkqrd4wwbgydzqdldqlbup2m',
+  'https://summit-ipfs.polkadot.io/ipfs/bafk2bzacecdyv44farkxdyy5j72pmgdtmpztpjtnfp4w7p55ygh5zhkicuamu',
+  'https://summit-ipfs.polkadot.io/ipfs/bafk2bzacebzoo4lohy667c55msv3t3ip2t57z5nyzaw6sghfv5mxwg3nsycmu',
 ];
 
 function getPlaceholderCover(id: string): string {

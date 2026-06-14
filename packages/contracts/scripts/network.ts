@@ -38,6 +38,8 @@ export async function withRetry<T>(
  */
 export function getEnvFileForNetwork(networkName: string): string {
   switch (networkName) {
+    case 'summit':
+      return '.env.summit';
     case 'previewnet':
       return '.env.previewnet';
     case 'paseo':
@@ -57,6 +59,8 @@ export function getTokenInfoForNetwork(network: string): {
   tokenName: string;
 } {
   switch (network) {
+    case 'summit':
+      return { decimals: 10, tokenName: 'SUM' };
     case 'paseo':
     case 'paseo-v2':
       return { decimals: 10, tokenName: 'PAS' };
@@ -72,6 +76,9 @@ export function getTokenInfoForNetwork(network: string): {
  */
 export function getWsEndpoint(network: string): string {
   switch (network) {
+    case 'summit':
+      // Use official polkadot.io endpoint (consistent with web app)
+      return 'wss://summit-asset-hub-rpc.polkadot.io';
     case 'paseo':
     case 'paseo-v2':
       // Use official polkadot.io endpoint (consistent with web app)

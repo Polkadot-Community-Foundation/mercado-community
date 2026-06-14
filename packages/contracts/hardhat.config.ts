@@ -72,6 +72,19 @@ const config: HardhatUserConfig = {
         target: 'pvm',
       },
     },
+    // Summit Asset Hub. There is NO public Summit eth-rpc endpoint — point
+    // SUMMIT_RPC_URL at a local revive eth-rpc adapter (e.g. the dotns adapter
+    // exposing http://localhost:8545 -> wss://summit-asset-hub-rpc.polkadot.io).
+    // Note: same EVM chainId (420420417) as Paseo — the RPC host decides which
+    // chain you actually hit, not the id.
+    summit: {
+      url: process.env.SUMMIT_RPC_URL || 'http://localhost:8545',
+      chainId: 420420417,
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      polkadot: {
+        target: 'pvm',
+      },
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS === 'true',

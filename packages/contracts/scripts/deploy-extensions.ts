@@ -1,9 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-import { ethers } from 'hardhat';
+import { ethers, network } from 'hardhat';
 
 import { getDeploymentsFilePath, withRetry } from './util';
+import { getEnvFileForNetwork } from './network';
 
 /**
  * Update environment files with contract addresses.
@@ -12,6 +13,7 @@ import { getDeploymentsFilePath, withRetry } from './util';
 function updateEnvFiles(
   addresses: Record<string, string>,
   genesisHash: string,
+  envFileName: string,
 ) {
   const appsDir = path.resolve(__dirname, '../../../apps');
 
@@ -19,7 +21,7 @@ function updateEnvFiles(
   const apps = ['web', 'mockmobrule-admin', 'mm-portal'];
 
   for (const app of apps) {
-    const envPath = path.join(appsDir, app, '.env.paseo-local');
+    const envPath = path.join(appsDir, app, envFileName);
 
     let content = '';
     if (fs.existsSync(envPath)) {
@@ -173,6 +175,7 @@ async function main() {
       MATCHMAKERS_ADDRESS: matchmakersAddress,
     },
     genesisHash,
+    getEnvFileForNetwork(network.name),
   );
 }
 

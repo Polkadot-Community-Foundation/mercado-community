@@ -24,7 +24,7 @@ export const GENESIS_HASH = import.meta.env.VITE_GENESIS_HASH as
 // RPC endpoints
 export const WS_RPC_ENDPOINT =
   import.meta.env.VITE_WS_RPC_ENDPOINT ||
-  'wss://paseo-asset-hub-rpc.polkadot.io';
+  'wss://summit-asset-hub-rpc.polkadot.io';
 
 // Chain spec URLs for smoldot (optional)
 export const RELAY_CHAIN_SPEC = import.meta.env.VITE_RELAY_CHAIN_SPEC as
@@ -38,9 +38,6 @@ export const PARA_CHAIN_SPEC = import.meta.env.VITE_PARA_CHAIN_SPEC as
 export const CONNECTION_MODE_STORAGE_KEY = 'mercado:connectionMode';
 
 // Known genesis hashes
-export const PASEO_ASSET_HUB_GENESIS =
-  '0xd6eec26135305a8ad257a20d003357284c8aa03d0bdb2b357ab0a22371e11ef2';
-
-/** Paseo Next V2 genesis hash (from truapi well-known-chains) */
-export const PASEO_ASSET_HUB_V2_GENESIS =
-  '0xbf0488dbe9daa1de1c08c5f743e26fdc2a4ecd74cf87dd1b4b1eeb99ae4ef19f';
+/** Summit Asset Hub genesis hash (read live 2026-06-11 via chain_getBlockHash(0)) */
+export const SUMMIT_ASSET_HUB_GENESIS =
+  '0xf388dc6d6cdf6fb77eac3c4a91f31bc0c8642b142f1a757512ab7849f9f70660';

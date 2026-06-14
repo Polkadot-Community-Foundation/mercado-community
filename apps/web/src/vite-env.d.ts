@@ -10,7 +10,7 @@ declare global {
 
 interface ImportMetaEnv {
   // Network configuration
-  readonly VITE_NETWORK?: 'paseo' | 'local' | 'previewnet';
+  readonly VITE_NETWORK?: 'summit' | 'local';
   readonly VITE_GENESIS_HASH?: string;
   readonly VITE_WS_RPC_ENDPOINT?: string;
 

@@ -8,7 +8,7 @@
 import { assetIdToErc20 } from '../lib/address';
 
 /** Supported network identifiers */
-export type NetworkId = 'paseo' | 'paseo-v2' | 'local' | 'previewnet';
+export type NetworkId = 'summit' | 'local';
 
 /** Chain configuration */
 export interface ChainConfig {
@@ -54,39 +54,29 @@ export interface NetworkConfig {
 
 /** Known genesis hashes */
 export const KNOWN_GENESIS_HASHES = {
-  /** Paseo Asset Hub (original/v1) */
-  paseoAssetHub:
-    '0xd6eec26135305a8ad257a20d003357284c8aa03d0bdb2b357ab0a22371e11ef2',
-  /** Paseo Next V2 Asset Hub */
-  paseoAssetHubV2:
-    '0xbf0488dbe9daa1de1c08c5f743e26fdc2a4ecd74cf87dd1b4b1eeb99ae4ef19f',
+  /** Summit Asset Hub (read live 2026-06-11 via chain_getBlockHash(0)) */
+  summitAssetHub:
+    '0xf388dc6d6cdf6fb77eac3c4a91f31bc0c8642b142f1a757512ab7849f9f70660',
 } as const;
 
 /** Default RPC endpoints */
 const DEFAULT_ENDPOINTS: Record<NetworkId, string> = {
-  paseo: 'wss://paseo-asset-hub-next-rpc.polkadot.io',
-  'paseo-v2': 'wss://paseo-asset-hub-next-rpc.polkadot.io', // Same RPC, different genesis
+  summit: 'wss://summit-asset-hub-rpc.polkadot.io',
   local: 'ws://127.0.0.1:9944',
-  previewnet: 'wss://previewnet.substrate.dev/asset-hub',
 };
 
 /** Default genesis hashes per network */
 const DEFAULT_GENESIS_HASHES: Record<NetworkId, `0x${string}`> = {
-  paseo: KNOWN_GENESIS_HASHES.paseoAssetHub,
-  'paseo-v2': KNOWN_GENESIS_HASHES.paseoAssetHubV2,
+  summit: KNOWN_GENESIS_HASHES.summitAssetHub,
   local: '0x0000000000000000000000000000000000000000000000000000000000000000',
-  previewnet:
-    '0x0000000000000000000000000000000000000000000000000000000000000000',
 };
 
 /**
  * Load network configuration from environment variables.
- * Provides sensible defaults for Paseo Asset Hub.
- *
- * Set VITE_NETWORK=paseo-v2 to use Paseo Next V2 with updated genesis hash.
+ * Provides sensible defaults for Summit Asset Hub.
  */
 export function loadNetworkConfig(): NetworkConfig {
-  const network = (import.meta.env.VITE_NETWORK || 'paseo') as NetworkId;
+  const network = (import.meta.env.VITE_NETWORK || 'summit') as NetworkId;
   const genesisHash =
     (import.meta.env.VITE_GENESIS_HASH as `0x${string}`) ||
     DEFAULT_GENESIS_HASHES[network];
@@ -99,7 +89,7 @@ export function loadNetworkConfig(): NetworkConfig {
         import.meta.env.VITE_WS_RPC_ENDPOINT || DEFAULT_ENDPOINTS[network],
       bulletinEndpoint:
         import.meta.env.VITE_BULLETIN_ENDPOINT ||
-        'wss://paseo-bulletin-next-rpc.polkadot.io',
+        'wss://summit-bulletin-rpc.polkadot.io',
       relayChainSpec: import.meta.env.VITE_RELAY_CHAIN_SPEC,
       paraChainSpec: import.meta.env.VITE_PARA_CHAIN_SPEC,
     },
@@ -162,14 +152,8 @@ export function getNetworkConfig(): NetworkConfig {
 export function isLightClientAvailable(): boolean {
   const config = getNetworkConfig();
 
-  // Available if we have explicit chain specs
-  if (config.chain.relayChainSpec && config.chain.paraChainSpec) {
-    return true;
-  }
-
-  // Available for known chains with bundled specs (V1 and V2)
-  return (
-    config.chain.genesisHash === KNOWN_GENESIS_HASHES.paseoAssetHub ||
-    config.chain.genesisHash === KNOWN_GENESIS_HASHES.paseoAssetHubV2
-  );
+  // Summit is a private network with no bundled @polkadot-api/known-chains
+  // chainspec, so smoldot light-client mode is only available when explicit
+  // relay/para chain spec URLs are provided via env.
+  return !!(config.chain.relayChainSpec && config.chain.paraChainSpec);
 }

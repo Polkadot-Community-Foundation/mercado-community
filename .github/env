@@ -1,18 +1,23 @@
-# Paseo Next V2 Asset Hub configuration for all deployments
-VITE_GENESIS_HASH=0xd6eec26135305a8ad257a20d003357284c8aa03d0bdb2b357ab0a22371e11ef2
-VITE_WS_RPC_ENDPOINT=wss://paseo-asset-hub-next-rpc.polkadot.io
+# Summit Asset Hub configuration for all deployments.
+# Loaded into the build env by the deploy workflow (lines starting with '#'
+# are stripped, so commented values become undefined at runtime).
+VITE_NETWORK=summit
+VITE_GENESIS_HASH=0xf388dc6d6cdf6fb77eac3c4a91f31bc0c8642b142f1a757512ab7849f9f70660
+VITE_WS_RPC_ENDPOINT=wss://summit-asset-hub-rpc.polkadot.io
 
-# Contract addresses (deployed on Paseo Asset Hub - v1.1.0)
-VITE_MERCADO_ADDRESS=0x25c9aee85173b0a914c62cd74d8bedf10a3afe68
-VITE_MERCADO_RATINGS_ADDRESS=0xcfd6c35de4a5de775e0174db6fa3ecb2e674cc03
-VITE_RESTAURANT_META_ADDRESS=0xe2bf8a1a0d726e43e63bdf18869675264ed86208
-VITE_MERCADO_DISPUTES_ADDRESS=0xd655e307d1759dc73f6f3665749ac8fb1e6694d2
-VITE_MATCHMAKERS_ADDRESS=0x28a2aa9b4f3e19be4b04c18ade15d5e6c09bd8cc
-VITE_MOCKMOBRULE_ADDRESS=0x354070d5791710a338858bc687f453ba9465ada6
+# Contract addresses — TODO: fill in after deploying the contracts to Summit
+# Asset Hub (`pnpm --filter @mercado/contracts deploy:summit`). Until then these
+# stay commented so the build does NOT bake stale Paseo addresses.
+# VITE_MERCADO_ADDRESS=0x...
+# VITE_MERCADO_RATINGS_ADDRESS=0x...
+# VITE_RESTAURANT_META_ADDRESS=0x...
+# VITE_MERCADO_DISPUTES_ADDRESS=0x...
+# VITE_MATCHMAKERS_ADDRESS=0x...
+# VITE_MOCKMOBRULE_ADDRESS=0x...
 
-# Bulletin Chain (for evidence/metadata uploads)
-VITE_BULLETIN_ENDPOINT=wss://paseo-bulletin-next-rpc.polkadot.io
-VITE_IPFS_GATEWAY=https://paseo-bulletin-next-ipfs.polkadot.io/ipfs/
+# Bulletin Chain (for evidence/metadata uploads) — Summit Bulletin
+VITE_BULLETIN_ENDPOINT=wss://summit-bulletin-rpc.polkadot.io
+VITE_IPFS_GATEWAY=https://summit-ipfs.polkadot.io/ipfs/
 
 # Enable real contract interactions
 VITE_USE_REAL_CONTRACTS=true

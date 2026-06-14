@@ -39,14 +39,16 @@ export async function getChainTokenInfo(): Promise<{
     // Local Hardhat
     return { decimals: 18, tokenName: 'LOC' };
   } else if (chainId === 420420417) {
-    // Paseo Asset Hub
+    // Paseo Asset Hub AND Summit Asset Hub share this EVM chain id — they only
+    // differ by RPC host / genesis. Both use 10 decimals; the ticker (PAS/SUM)
+    // is cosmetic and not chain-id distinguishable, so we report PAS here.
     return { decimals: 10, tokenName: 'PAS' };
   } else if (chainId === 420420421) {
     // Westend Asset Hub
     return { decimals: 12, tokenName: 'WND' };
   } else {
     throw new Error(
-      `Unsupported chain ID ${chainId}. Supported chains: 31337 (local), 420420417 (Paseo), 420420421 (Westend)`,
+      `Unsupported chain ID ${chainId}. Supported chains: 31337 (local), 420420417 (Paseo/Summit), 420420421 (Westend)`,
     );
   }
 }

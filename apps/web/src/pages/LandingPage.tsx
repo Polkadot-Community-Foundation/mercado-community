@@ -93,7 +93,7 @@ function HeroLayout({ children }: { children: React.ReactNode }) {
       <div className="absolute inset-0 bg-gradient-to-br from-brand via-brand-dark to-gray-900" />
       {!imageError && (
         <img
-          src="https://paseo-ipfs.polkadot.io/ipfs/bafk2bzacecqjgqgpt2aer3ls6umq4a4wfygvqv64pjllv33oyeuzucz6dze44"
+          src="https://summit-ipfs.polkadot.io/ipfs/bafk2bzacecqjgqgpt2aer3ls6umq4a4wfygvqv64pjllv33oyeuzucz6dze44"
           alt=""
           onError={() => setImageError(true)}
           className="absolute inset-0 h-full w-full object-cover"

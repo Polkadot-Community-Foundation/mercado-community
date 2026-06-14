@@ -10,6 +10,7 @@ DotNS domain, and (separately) the smart contracts to Summit Asset Hub.
 ```
 
 The interactive script will guide you through:
+
 1. Installing dependencies
 2. Building the project (Summit config is baked in by default)
 3. Deploying `apps/web/dist` to Summit Bulletin Chain via `polkadot-app-deploy`
@@ -43,6 +44,7 @@ Use a dedicated deployment wallet, not your main holdings wallet.
 ```
 
 Prompts for:
+
 - **Domain**: your DotNS domain (default: `mercado.dot`)
 - **Mnemonic**: the Summit deployment wallet seed phrase (not stored)
 
@@ -72,9 +74,11 @@ tests) runs in `ci.yml`.
 ## After Deployment
 
 Your app will be available at:
+
 ```
 https://<your-domain>.dot.li
 ```
+
 For example, `mercado.dot` → `https://mercado.dot.li`.
 
 ## Contracts (Summit Asset Hub)

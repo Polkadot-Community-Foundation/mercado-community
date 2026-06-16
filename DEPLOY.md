@@ -20,7 +20,7 @@ The interactive script will guide you through:
 
 - **Node.js 18+** — [Download](https://nodejs.org)
 - **pnpm** — installed automatically if missing
-- **polkadot-app-deploy** — `@polkadot-community-foundation/polkadot-app-deploy@0.10.1`,
+- **polkadot-app-deploy** — `@polkadot-community-foundation/polkadot-app-deploy@0.11.0`,
   installed automatically if missing
 - **A Summit deployment account** — see below
 

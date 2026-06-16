@@ -146,7 +146,7 @@ check_prerequisites() {
     log_success "polkadot-app-deploy $(polkadot-app-deploy --version 2>/dev/null || echo 'installed')"
   else
     log_warn "polkadot-app-deploy not found - installing..."
-    npm install -g @polkadot-community-foundation/polkadot-app-deploy@0.10.1
+    npm install -g @polkadot-community-foundation/polkadot-app-deploy@0.11.0
     log_success "polkadot-app-deploy installed"
   fi
 

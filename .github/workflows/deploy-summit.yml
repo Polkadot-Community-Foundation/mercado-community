@@ -80,7 +80,7 @@ jobs:
   deploy:
     name: Deploy to Summit
     needs: build
-    uses: Polkadot-Community-Foundation/polkadot-app-deploy/.github/workflows/deploy.yml@v0.11.0
+    uses: Polkadot-Community-Foundation/polkadot-app-deploy/.github/workflows/deploy.yml@v0.11.1
     with:
       dotns-domain: mercado.dot
       artifact-name: web-build
@@ -89,7 +89,13 @@ jobs:
       # NOT the public BULLETIN_POOL accounts — those are never storage-authorized
       # on Summit and the preflight dies with "pool account N is not authorized".
       direct-signer: true
-      polkadot-app-deploy-version: '0.11.0'
+      polkadot-app-deploy-version: '0.11.1'
+      # List mercado.dot in the browse app-directory by publishing it on-chain.
+      # The reusable workflow calls Publisher.publish(label) when publish: true.
+      # Summit's Publisher address is wired only from CLI v0.11.1 onward (before
+      # that publish was a silent no-op on Summit). The deploy signer (5Fk8) is the
+      # Publisher owner, so publishing has no proof-of-personhood gate / rate limit.
+      publish: true
       skip-cache: ${{ inputs.skip-cache || false }}
       max-retries: 10
     secrets:

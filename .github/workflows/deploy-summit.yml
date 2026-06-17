@@ -89,7 +89,14 @@ jobs:
       # NOT the public BULLETIN_POOL accounts — those are never storage-authorized
       # on Summit and the preflight dies with "pool account N is not authorized".
       direct-signer: true
-      polkadot-app-deploy-version: '0.11.1'
+      # Source-build the CLI from the PCF fork at the v0.11.1 SHA. The reusable
+      # workflow's npm-install path is hardcoded to @parity/polkadot-app-deploy
+      # (wrong scope — PCF publishes @polkadot-community-foundation), so the
+      # `polkadot-app-deploy-version` input resolves to a nonexistent @parity
+      # release and fails ETARGET. The source-build path (repo + ref) avoids that.
+      # de47f7e = v0.11.1 (wires Summit's Publisher address).
+      polkadot-app-deploy-repo: Polkadot-Community-Foundation/polkadot-app-deploy
+      polkadot-app-deploy-ref: de47f7eef5b7b84427c68038894277d6ec374417
       # List mercado.dot in the browse app-directory by publishing it on-chain.
       # The reusable workflow calls Publisher.publish(label) when publish: true.
       # Summit's Publisher address is wired only from CLI v0.11.1 onward (before

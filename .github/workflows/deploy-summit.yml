@@ -80,7 +80,7 @@ jobs:
   deploy:
     name: Deploy to Summit
     needs: build
-    uses: Polkadot-Community-Foundation/polkadot-app-deploy/.github/workflows/deploy.yml@v0.10.1
+    uses: Polkadot-Community-Foundation/polkadot-app-deploy/.github/workflows/deploy.yml@v0.11.0
     with:
       dotns-domain: mercado.dot
       artifact-name: web-build
@@ -89,7 +89,7 @@ jobs:
       # NOT the public BULLETIN_POOL accounts — those are never storage-authorized
       # on Summit and the preflight dies with "pool account N is not authorized".
       direct-signer: true
-      polkadot-app-deploy-version: '0.10.1'
+      polkadot-app-deploy-version: '0.11.0'
       skip-cache: ${{ inputs.skip-cache || false }}
       max-retries: 10
     secrets:

@@ -1,23 +1,14 @@
-# Summit Asset Hub configuration for all deployments.
-# Loaded into the build env by the deploy workflow (lines starting with '#'
-# are stripped, so commented values become undefined at runtime).
-VITE_NETWORK=summit
-VITE_GENESIS_HASH=0xf388dc6d6cdf6fb77eac3c4a91f31bc0c8642b142f1a757512ab7849f9f70660
-VITE_WS_RPC_ENDPOINT=wss://summit-asset-hub-rpc.polkadot.io
-
-# Contract addresses — TODO: fill in after deploying the contracts to Summit
-# Asset Hub (`pnpm --filter @mercado/contracts deploy:summit`). Until then these
-# stay commented so the build does NOT bake stale Paseo addresses.
-# VITE_MERCADO_ADDRESS=0x...
-# VITE_MERCADO_RATINGS_ADDRESS=0x...
-# VITE_RESTAURANT_META_ADDRESS=0x...
-# VITE_MERCADO_DISPUTES_ADDRESS=0x...
-# VITE_MATCHMAKERS_ADDRESS=0x...
-# VITE_MOCKMOBRULE_ADDRESS=0x...
-
-# Bulletin Chain (for evidence/metadata uploads) — Summit Bulletin
-VITE_BULLETIN_ENDPOINT=wss://summit-bulletin-rpc.polkadot.io
-VITE_IPFS_GATEWAY=https://summit-ipfs.polkadot.io/ipfs/
-
-# Enable real contract interactions
+# Paseo Next (PCF suite) — baked into the CI build.
+VITE_NETWORK=paseo-next
+VITE_GENESIS_HASH=0xbf0488dbe9daa1de1c08c5f743e26fdc2a4ecd74cf87dd1b4b1eeb99ae4ef19f
+VITE_WS_RPC_ENDPOINT=wss://paseo-asset-hub-next-rpc.polkadot.io
+VITE_BULLETIN_ENDPOINT=wss://paseo-bulletin-next-rpc.polkadot.io
+VITE_IPFS_GATEWAY=https://paseo-bulletin-next-ipfs.polkadot.io/ipfs/
 VITE_USE_REAL_CONTRACTS=true
+# PCF contracts on AH-next 1500 (deployer/owner 0x8C78b53f)
+VITE_MERCADO_ADDRESS=0x24f2cce5598c733415d4cb3d23494c7e589d05ba
+VITE_MERCADO_RATINGS_ADDRESS=0x569ee3092a64fdeb114c1cf3414817b31d3bc0bd
+VITE_RESTAURANT_META_ADDRESS=0x45948d57f413e33de6a14fcd46a77caf1a2bd3a5
+VITE_MERCADO_DISPUTES_ADDRESS=0x3534046ef8746d35d91935375bc31e4a25ec5e2a
+VITE_MOCKMOBRULE_ADDRESS=0x287375a3bea64533388d7b99dd60310cdcd2248c
+VITE_MATCHMAKERS_ADDRESS=0x90a37a7e865265922ac9206a74f1c5df54117394

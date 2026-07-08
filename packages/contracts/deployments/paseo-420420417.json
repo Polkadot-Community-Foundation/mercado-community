@@ -1,13 +1,13 @@
 {
   "network": "paseo",
   "chainId": "420420417",
-  "mercadoCore": "0x25c9aee85173b0a914c62cd74d8bedf10a3afe68",
-  "deployer": "0xf7D8ac317b2A37b285fc5A65134aE2Df909d0185",
-  "timestamp": "2026-04-18T12:30:43.806Z",
-  "mercadoRatings": "0xcfd6c35de4a5de775e0174db6fa3ecb2e674cc03",
-  "restaurantMeta": "0xe2bf8a1a0d726e43e63bdf18869675264ed86208",
-  "mercadoDisputes": "0xd655e307d1759dc73f6f3665749ac8fb1e6694d2",
-  "mockMobRule": "0x354070d5791710a338858bc687f453ba9465ada6",
-  "mercadoMatchmakers": "0x28a2aa9b4f3e19be4b04c18ade15d5e6c09bd8cc",
-  "extensionsTimestamp": "2026-04-18T12:34:12.029Z"
+  "mercadoCore": "0x24f2cce5598c733415d4cb3d23494c7e589d05ba",
+  "deployer": "0x8C78b53f2CEAF395fDA66152d7A5e6e7A79DB675",
+  "timestamp": "2026-07-08T05:03:21.232Z",
+  "mercadoRatings": "0x569ee3092a64fdeb114c1cf3414817b31d3bc0bd",
+  "restaurantMeta": "0x45948d57f413e33de6a14fcd46a77caf1a2bd3a5",
+  "mercadoDisputes": "0x3534046ef8746d35d91935375bc31e4a25ec5e2a",
+  "mockMobRule": "0x287375a3bea64533388d7b99dd60310cdcd2248c",
+  "mercadoMatchmakers": "0x90a37a7e865265922ac9206a74f1c5df54117394",
+  "extensionsTimestamp": "2026-07-08T05:04:02.910Z"
 }

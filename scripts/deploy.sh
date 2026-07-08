@@ -146,7 +146,7 @@ check_prerequisites() {
     log_success "polkadot-app-deploy $(polkadot-app-deploy --version 2>/dev/null || echo 'installed')"
   else
     log_warn "polkadot-app-deploy not found - installing..."
-    npm install -g @polkadot-community-foundation/polkadot-app-deploy@0.11.0
+    npm install -g @polkadot-community-foundation/polkadot-app-deploy@0.12.0
     log_success "polkadot-app-deploy installed"
   fi
 
@@ -262,7 +262,7 @@ deploy_to_bulletin() {
   log_warn "This may take a few minutes..."
   echo ""
 
-  MNEMONIC="$MNEMONIC" polkadot-app-deploy "$DIST_DIR" "$domain" --env summit
+  MNEMONIC="$MNEMONIC" polkadot-app-deploy "$DIST_DIR" "$domain" --env paseo-next
 
   echo ""
   log_success "Deployment complete!"

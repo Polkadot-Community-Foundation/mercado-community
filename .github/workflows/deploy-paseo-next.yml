@@ -20,7 +20,7 @@ on:
   #     - 'apps/web/**'
   #     - 'packages/**'
   #     - '.github/env'
-  #     - '.github/workflows/deploy-summit.yml'
+  #     - '.github/workflows/deploy-paseo-next.yml'
   workflow_dispatch:
     inputs:
       skip-cache:
@@ -29,7 +29,7 @@ on:
         default: false
 
 concurrency:
-  group: deploy-summit-${{ github.ref }}
+  group: deploy-paseo-next-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -84,7 +84,7 @@ jobs:
     with:
       dotns-domain: mercado.dot
       artifact-name: web-build
-      env: summit
+      env: paseo-next
       # Sign Bulletin storage txs with the (authorized) mnemonic account itself,
       # NOT the public BULLETIN_POOL accounts — those are never storage-authorized
       # on Summit and the preflight dies with "pool account N is not authorized".

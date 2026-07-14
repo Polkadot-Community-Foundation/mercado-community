@@ -76,11 +76,11 @@ jobs:
   deploy:
     name: Deploy to devnet
     needs: build
-    uses: Polkadot-Community-Foundation/polkadot-app-deploy/.github/workflows/deploy.yml@v0.11.1
+    uses: Polkadot-Community-Foundation/polkadot-app-deploy/.github/workflows/deploy.yml@v0.12.1
     with:
       dotns-domain: mercado.dot
       artifact-name: web-build
-      env: paseo-next
+      env: devnet
       # Sign Bulletin storage txs with the (authorized) mnemonic account itself,
       # NOT the public BULLETIN_POOL accounts — those are never storage-authorized
       # on Summit and the preflight dies with "pool account N is not authorized".
@@ -90,14 +90,15 @@ jobs:
       # (wrong scope — PCF publishes @polkadot-community-foundation), so the
       # `polkadot-app-deploy-version` input resolves to a nonexistent @parity
       # release and fails ETARGET. The source-build path (repo + ref) avoids that.
-      # de47f7e = v0.11.1 (wires Summit's Publisher address).
+      # 5795195 = v0.12.1 (ships the built-in `devnet` env — public Paseo
+      # AH 1000/People 1004/Bulletin 1010; v0.11.1 did not know `devnet`).
       polkadot-app-deploy-repo: Polkadot-Community-Foundation/polkadot-app-deploy
-      polkadot-app-deploy-ref: de47f7eef5b7b84427c68038894277d6ec374417
+      polkadot-app-deploy-ref: 57951954cbc02524e1e32169da3070f1f4f67a59
       # List mercado.dot in the browse app-directory by publishing it on-chain.
       # The reusable workflow calls Publisher.publish(label) when publish: true.
-      # Summit's Publisher address is wired only from CLI v0.11.1 onward (before
-      # that publish was a silent no-op on Summit). The deploy signer (5Fk8) is the
-      # Publisher owner, so publishing has no proof-of-personhood gate / rate limit.
+      # NOTE: the devnet environment has no PUBLISHER contract wired yet, so this
+      # is a non-fatal skip today (the .dot content still deploys); it starts
+      # listing automatically once a devnet Publisher is configured.
       publish: true
       skip-cache: ${{ inputs.skip-cache || false }}
       max-retries: 10

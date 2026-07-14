@@ -1,14 +1,17 @@
-# Paseo Next (PCF suite) — baked into the CI build.
-VITE_NETWORK=paseo-next
-VITE_GENESIS_HASH=0xbf0488dbe9daa1de1c08c5f743e26fdc2a4ecd74cf87dd1b4b1eeb99ae4ef19f
-VITE_WS_RPC_ENDPOINT=wss://paseo-asset-hub-next-rpc.polkadot.io
-VITE_BULLETIN_ENDPOINT=wss://paseo-bulletin-next-rpc.polkadot.io
-VITE_IPFS_GATEWAY=https://paseo-bulletin-next-ipfs.polkadot.io/ipfs/
+# Devnet (public Paseo — AH 1000 / People 1004 / Bulletin 1010) — baked into the CI build.
+VITE_NETWORK=devnet
+VITE_GENESIS_HASH=0xd6eec26135305a8ad257a20d003357284c8aa03d0bdb2b357ab0a22371e11ef2
+VITE_WS_RPC_ENDPOINT=wss://asset-hub-paseo-rpc.n.dwellir.com
+VITE_BULLETIN_ENDPOINT=wss://bulletin-paseo.tservices.es:8443
+# Devnet Bulletin HTTP IPFS gateway is still pending (see the DEVNET register).
+# Left unset so display URLs fall back until a public gateway lands; supply
+# VITE_IPFS_GATEWAY once available.
+# VITE_IPFS_GATEWAY=
 VITE_USE_REAL_CONTRACTS=true
-# PCF contracts on AH-next 1500 (deployer/owner 0x8C78b53f)
-VITE_MERCADO_ADDRESS=0x24f2cce5598c733415d4cb3d23494c7e589d05ba
-VITE_MERCADO_RATINGS_ADDRESS=0x569ee3092a64fdeb114c1cf3414817b31d3bc0bd
-VITE_RESTAURANT_META_ADDRESS=0x45948d57f413e33de6a14fcd46a77caf1a2bd3a5
-VITE_MERCADO_DISPUTES_ADDRESS=0x3534046ef8746d35d91935375bc31e4a25ec5e2a
-VITE_MOCKMOBRULE_ADDRESS=0x287375a3bea64533388d7b99dd60310cdcd2248c
-VITE_MATCHMAKERS_ADDRESS=0x90a37a7e865265922ac9206a74f1c5df54117394
+# PCF contracts on Paseo AH 1000 (devnet; deployer/owner 0x8C78b53f)
+VITE_MERCADO_ADDRESS=0x919517341d0efC3eAc11B437DcbC6A71C453789A
+VITE_MERCADO_RATINGS_ADDRESS=0x0226c327b47f34afdce5c123a9cdecce553f9d42
+VITE_RESTAURANT_META_ADDRESS=0x6e49841681d9a00cf064fcf0a7852d34aed11328
+VITE_MERCADO_DISPUTES_ADDRESS=0xa81ca2c7b1fff367830991a180a697afb5005aad
+VITE_MOCKMOBRULE_ADDRESS=0x1e3f11204f1d20bb35e3407171cde48b393c518f
+VITE_MATCHMAKERS_ADDRESS=0xbd77d41baff68e6e0e439848df2c466937ecc47b

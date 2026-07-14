@@ -84,7 +84,7 @@ jobs:
     with:
       dotns-domain: mercado.dot
       artifact-name: web-build
-      env: paseo-next
+      env: devnet
       # Sign Bulletin storage txs with the (authorized) mnemonic account itself,
       # NOT the public BULLETIN_POOL accounts — those are never storage-authorized
       # on Summit and the preflight dies with "pool account N is not authorized".

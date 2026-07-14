@@ -1,4 +1,4 @@
-name: Deploy to Summit
+name: Deploy to devnet
 
 # Production deploy of the Mercado web app to Summit (Bulletin Chain + DotNS).
 #
@@ -56,19 +56,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Load environment config (Summit)
+      - name: Load environment config (devnet)
         run: grep -v '^#' .github/env | grep -v '^$' >> $GITHUB_ENV
 
       - name: Build
         run: pnpm build
 
-      - name: Assert build is Summit-only (no Paseo strings baked in)
+      - name: Assert build is devnet (Summit/paseo assert disabled)
         run: |
-          if grep -rIl 'paseo' apps/web/dist; then
-            echo "::error::Paseo reference found in built bundle — aborting Summit deploy"
-            exit 1
-          fi
-          echo "OK: no Paseo strings in apps/web/dist"
+          echo "devnet targets public Paseo — Summit/paseo bundle assert intentionally disabled"
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v5
@@ -78,7 +74,7 @@ jobs:
           retention-days: 1
 
   deploy:
-    name: Deploy to Summit
+    name: Deploy to devnet
     needs: build
     uses: Polkadot-Community-Foundation/polkadot-app-deploy/.github/workflows/deploy.yml@v0.11.1
     with:
